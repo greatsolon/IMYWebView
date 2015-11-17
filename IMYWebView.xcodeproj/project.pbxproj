@@ -18,6 +18,7 @@
 		36A5AE481B4627E100DF4CD0 /* IMYWebViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A5AE471B4627E100DF4CD0 /* IMYWebViewTests.m */; };
 		36A5AE6A1B46282F00DF4CD0 /* IMYWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A5AE531B46282F00DF4CD0 /* IMYWebView.m */; };
 		36A5AE711B462AE500DF4CD0 /* IMY_NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 36A5AE701B462AE500DF4CD0 /* IMY_NJKWebViewProgress.m */; };
+		E0B42D341BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E0B42D331BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		36A5AE531B46282F00DF4CD0 /* IMYWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMYWebView.m; sourceTree = "<group>"; };
 		36A5AE6F1B462AE500DF4CD0 /* IMY_NJKWebViewProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMY_NJKWebViewProgress.h; sourceTree = "<group>"; };
 		36A5AE701B462AE500DF4CD0 /* IMY_NJKWebViewProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMY_NJKWebViewProgress.m; sourceTree = "<group>"; };
+		E0B42D321BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WYWeakScriptMessageDelegate.h; sourceTree = "<group>"; };
+		E0B42D331BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WYWeakScriptMessageDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 			children = (
 				36A5AE521B46282F00DF4CD0 /* IMYWebView.h */,
 				36A5AE531B46282F00DF4CD0 /* IMYWebView.m */,
+				E0B42D321BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.h */,
+				E0B42D331BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.m */,
 				36A5AE6E1B462AE500DF4CD0 /* UIWebViewProgress */,
 			);
 			path = Classes;
@@ -258,6 +263,7 @@
 				36A5AE341B4627E100DF4CD0 /* SecondViewController.m in Sources */,
 				36A5AE2E1B4627E100DF4CD0 /* AppDelegate.m in Sources */,
 				36A5AE311B4627E100DF4CD0 /* FirstViewController.m in Sources */,
+				E0B42D341BFAC82D002F54C5 /* WYWeakScriptMessageDelegate.m in Sources */,
 				36A5AE6A1B46282F00DF4CD0 /* IMYWebView.m in Sources */,
 				36A5AE2B1B4627E100DF4CD0 /* main.m in Sources */,
 			);
