@@ -448,6 +448,26 @@
     }
 }
 
+/**
+ *  添加js回调oc通知方式，适用于 iOS8 之后
+ */
+- (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name
+{
+    if ([_realWebView isKindOfClass:NSClassFromString(@"WKWebView")]) {
+        [[(WKWebView *)_realWebView configuration].userContentController addScriptMessageHandler:scriptMessageHandler name:name];
+    }
+}
+
+/**
+ *  注销 注册过的js回调oc通知方式，适用于 iOS8 之后
+ */
+- (void)removeScriptMessageHandlerForName:(NSString *)name
+{
+    if ([_realWebView isKindOfClass:NSClassFromString(@"WKWebView")]) {
+        [[(WKWebView *)_realWebView configuration].userContentController removeScriptMessageHandlerForName:name];
+    }
+}
+
 -(NSInteger)countOfHistory
 {
     if(_usingUIWebView)

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WKScriptMessageHandler.h>
 
 @class IMYWebView;
 @protocol IMYWebViewDelegate <NSObject>
@@ -35,6 +36,15 @@
 @property (nonatomic, readonly) double estimatedProgress;
 
 @property (nonatomic, readonly) NSURLRequest *originRequest;
+
+/**
+ *  添加js回调oc通知方式，适用于 iOS8 之后
+ */
+- (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;
+/**
+ *  注销 注册过的js回调oc通知方式，适用于 iOS8 之后
+ */
+- (void)removeScriptMessageHandlerForName:(NSString *)name;
 
 ///back 层数
 - (NSInteger)countOfHistory;
