@@ -80,6 +80,8 @@
     WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
     configuration.preferences = [NSClassFromString(@"WKPreferences") new];
     configuration.userContentController = [NSClassFromString(@"WKUserContentController") new];
+	configuration.allowsInlineMediaPlayback = YES;
+	configuration.mediaPlaybackRequiresUserAction = NO;
     
     WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
     webView.UIDelegate = self;
@@ -109,6 +111,7 @@
     UIWebView* webView = [[UIWebView alloc] initWithFrame:self.bounds];
     webView.backgroundColor = [UIColor clearColor];
     webView.opaque = NO;
+	[webView setMediaPlaybackRequiresUserAction:NO];
     for (UIView *subview in [webView.scrollView subviews])
     {
         if ([subview isKindOfClass:[UIImageView class]])
@@ -350,21 +353,6 @@
 - (void)stopLoading
 {
     [self.realWebView stopLoading];
-}
-
-- (void)setMediaPlaybackRequiresUserAction:(BOOL)bIsRequires
-{
-	if(_usingUIWebView)
-	{
-		[(UIWebView*)self.realWebView setMediaPlaybackRequiresUserAction:bIsRequires];
-	}
-	else
-	{
-		WKWebView* webView = (WKWebView*)self.realWebView;
-		WKWebViewConfiguration *config = [webView configuration];
-		config.allowsInlineMediaPlayback = YES;
-		config.mediaPlaybackRequiresUserAction = bIsRequires;
-	}
 }
 
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^)(id, NSError *))completionHandler
