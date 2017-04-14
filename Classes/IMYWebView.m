@@ -69,7 +69,8 @@
         [self initUIWebView];
         _usingUIWebView = YES;
     }
-    self.scalesPageToFit = YES;
+	// 别特么傻逼似的默认进来就scalesPageToFit，哪不一定对好么亲！！！！
+    self.scalesPageToFit = NO;
     
     [self.realWebView setFrame:self.bounds];
     [self.realWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
@@ -408,7 +409,11 @@
         
         WKWebView* webView = _realWebView;
         
-        NSString *jScript = @"var meta = document.createElement('meta'); meta.setAttribute('name', 'viewport'); meta.setAttribute('content', 'width=device-width'); document.getElementsByTagName('head')[0].appendChild(meta);";
+        NSString *jScript = @"var meta = document.createElement('meta'); \
+        meta.name = 'viewport'; \
+        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
+        var head = document.getElementsByTagName('head')[0];\
+        head.appendChild(meta);";
         
         if(scalesPageToFit)
         {
