@@ -74,6 +74,9 @@
 ///不建议使用这个办法  因为会在内部等待webView 的执行结果
 - (NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)javaScriptString __deprecated_msg("Method deprecated. Use [evaluateJavaScript:completionHandler:]");
 
+///设置是否需要用户点击才播放背景音乐
+- (void)setMediaPlaybackRequiresUserAction:(BOOL)bIsRequires;
+
 ///是否根据视图大小来缩放页面  默认为YES
 @property (nonatomic) BOOL scalesPageToFit;
 

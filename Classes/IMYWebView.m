@@ -352,6 +352,21 @@
     [self.realWebView stopLoading];
 }
 
+- (void)setMediaPlaybackRequiresUserAction:(BOOL)bIsRequires
+{
+	if(_usingUIWebView)
+	{
+		[(UIWebView*)self.realWebView setMediaPlaybackRequiresUserAction:bIsRequires];
+	}
+	else
+	{
+		WKWebView* webView = (WKWebView*)self.realWebView;
+		WKWebViewConfiguration *config = [webView configuration];
+		config.allowsInlineMediaPlayback = YES;
+		config.mediaPlaybackRequiresUserAction = bIsRequires;
+	}
+}
+
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^)(id, NSError *))completionHandler
 {
     if(_usingUIWebView)
