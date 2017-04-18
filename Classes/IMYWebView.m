@@ -87,19 +87,19 @@
 	[javascript appendString:@"style.type = 'text/css';"];
 	[javascript appendFormat:@"var cssContent = document.createTextNode('%@');", css];
 	[javascript appendString:@"style.appendChild(cssContent);"];
-	[javascript appendString:@"document.body.appendChild(style);"];
+	[javascript appendString:@"document.body.appendChild(style);document.documentElement.style.webkitTouchCallout='none';document.documentElement.style.webkitUserSelect='none';"];
 	
 	// javascript注入
-	WKUserScript *noneSelectScript = [[WKUserScript alloc] initWithSource:javascript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
-	WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+	WKUserScript *noneSelectScript = [[WKUserScript alloc] initWithSource:javascript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+	WKUserContentController *userContentController = [NSClassFromString(@"WKUserContentController") new];
 	[userContentController addUserScript:noneSelectScript];
 	
-    WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
-    configuration.preferences = [NSClassFromString(@"WKPreferences") new];
-    configuration.userContentController = userContentController;
+	WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
+	configuration.preferences = [NSClassFromString(@"WKPreferences") new];
+	configuration.userContentController = userContentController;
 	configuration.allowsInlineMediaPlayback = YES;
 	configuration.mediaPlaybackRequiresUserAction = NO;
-    
+	
     WKWebView* webView = [[NSClassFromString(@"WKWebView") alloc] initWithFrame:self.bounds configuration:configuration];
     webView.UIDelegate = self;
     webView.navigationDelegate = self;
