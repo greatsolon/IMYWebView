@@ -78,9 +78,25 @@
 }
 -(void)initWKWebView
 {
+	// 禁止选择CSS
+	NSString *css = @"body{-webkit-user-select:none;-webkit-user-drag:none;}";
+	
+	// CSS选中样式取消
+	NSMutableString *javascript = [NSMutableString string];
+	[javascript appendString:@"var style = document.createElement('style');"];
+	[javascript appendString:@"style.type = 'text/css';"];
+	[javascript appendFormat:@"var cssContent = document.createTextNode('%@');", css];
+	[javascript appendString:@"style.appendChild(cssContent);"];
+	[javascript appendString:@"document.body.appendChild(style);"];
+	
+	// javascript注入
+	WKUserScript *noneSelectScript = [[WKUserScript alloc] initWithSource:javascript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+	WKUserContentController *userContentController = [[WKUserContentController alloc] init];
+	[userContentController addUserScript:noneSelectScript];
+	
     WKWebViewConfiguration* configuration = [[NSClassFromString(@"WKWebViewConfiguration") alloc] init];
     configuration.preferences = [NSClassFromString(@"WKPreferences") new];
-    configuration.userContentController = [NSClassFromString(@"WKUserContentController") new];
+    configuration.userContentController = userContentController;
 	configuration.allowsInlineMediaPlayback = YES;
 	configuration.mediaPlaybackRequiresUserAction = NO;
     
